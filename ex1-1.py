@@ -109,9 +109,9 @@ def evaluate_model(model, x_test, y_test, x_train, y_train, loss_list):
     model.eval() #Explicitly set to evaluate mode
 
     #Predict on Train and Validation Datasets
-    y_test_prob = model(x_test)
+    y_test_prob = model(x_test).to(device)
     y_test_pred = np.where(y_test_prob > 0.5, 1, 0)
-    y_train_prob = model(x_train)
+    y_train_prob = model(x_train).to(device)
     y_train_pred = np.where(y_train_prob > 0.5, 1, 0)
 
     #Compute Training and Validation Metrics
